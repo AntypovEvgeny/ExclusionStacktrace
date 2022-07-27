@@ -6,7 +6,7 @@ public class Main {
 
         String[] products = {"Молоко", "Яблоки", "Сыр", "картофель", "Хлеб"};
         int[] prices = {80, 50, 200, 35, 45};
-        int[] numb = new int[5];
+        int[] numb = new int[8];
         int sum = 0;
         System.out.println("Список товаров:");
 
@@ -14,7 +14,16 @@ public class Main {
             System.out.println((i + 1) + ". " + products[i] + " " + prices[i] + " руб");
 
         }
+        String[] saleProducts = {"Лук", "Груши", "Морковь"};
+        int[] salePrices = {20, 100, 30};
+        int[] saleNumb = new int[3];
+        int sumSale = 0;
 
+        System.out.println("Акция! 3 шт по цене 2! Товары по акции: ");
+
+        for (int i = 0; i < saleProducts.length; i++) {
+            System.out.println((i + 6) + ". " + saleProducts[i] + " " + salePrices[i] + " руб");
+        }
         while (true) {
             try {
                 System.out.println("Выберите товар и количество.");
@@ -32,8 +41,8 @@ public class Main {
                 int numProduct = Integer.parseInt(parts[0]) - 1;
                 int amount = Integer.parseInt(parts[1]);
 
-                if (numProduct > 4 || numProduct < 0 || amount < 0) {
-                    System.out.println("Первое число должно быть от 0 до 5, второе положительное!");
+                if (numProduct > 7 || numProduct < 0 || amount < 0) {
+                    System.out.println("Первое число должно быть от 0 до 8, второе положительное!");
                 } else {
                     numb[numProduct] += amount;
                 }
@@ -41,8 +50,13 @@ public class Main {
                 System.out.println("Нужно вводить только числа!");
                 continue;
             }
-
         }
+
+        for (int i = 0; i < numb.length; i++) {
+            if (i > 4)
+                saleNumb[i - 5] = numb[i];
+        }
+
         System.out.println("В вашей корзине:");
         for (int i = 0; i < products.length; i++) {
             if (numb[i] > 0) {
@@ -51,7 +65,15 @@ public class Main {
             }
         }
 
-        System.out.println("Сумма всей покупки: " + sum + " руб");
-    }
+        System.out.println("Товары по акции: ");
+        for (int i = 0; i < saleProducts.length; i++) {
+            if (saleNumb[i] > 0) {
+                int saleSum = (saleNumb[i] - (saleNumb[i] / 3)) * salePrices[i];
+                System.out.println(saleProducts[i] + " " + saleNumb[i] + " шт, " + salePrices[i] + " руб/шт. Итого: " + saleSum + " руб");
+                sumSale += saleSum;
+            }
+        }
 
+        System.out.println("Сумма всей покупки: " + (sum + sumSale) + " руб");
+    }
 }
