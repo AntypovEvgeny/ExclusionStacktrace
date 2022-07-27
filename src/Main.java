@@ -32,8 +32,10 @@ public class Main {
                 int numProduct = Integer.parseInt(parts[0]) - 1;
                 int amount = Integer.parseInt(parts[1]);
 
-                if (numProduct > 4 || numProduct < 0 || amount < 0) {
-                    System.out.println("Первое число должно быть от 0 до 5, второе положительное!");
+                if (numProduct > 4 || numProduct < 0) {
+                    System.out.println("Первое число должно быть от 0 до 5!");
+                } else if (amount == 0) {
+                    numb[numProduct] = 0;
                 } else {
                     numb[numProduct] += amount;
                 }
