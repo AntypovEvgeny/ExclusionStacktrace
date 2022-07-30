@@ -50,7 +50,7 @@ public class Main {
                 }
             } catch (NumberFormatException exception) {
                 System.out.println("Нужно вводить только числа!");
-                continue;
+                //continue;
             }
         }
 
