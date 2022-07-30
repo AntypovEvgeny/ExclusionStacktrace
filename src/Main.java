@@ -22,7 +22,8 @@ public class Main {
         System.out.println("Акция! 3 шт по цене 2! Товары по акции: ");
 
         for (int i = 0; i < saleProducts.length; i++) {
-            System.out.println((i +1 + products.length) + ". " + saleProducts[i] + " " + salePrices[i] + " руб");
+            System.out.println((i + 1 + products.length) + ". " + saleProducts[i] + " " + salePrices[i] + " руб");
+
         }
         while (true) {
             try {
@@ -56,6 +57,7 @@ public class Main {
         for (int i = 0; i < numb.length; i++) {
             if (i > (products.length - 1))
                 saleNumb[i - products.length] = numb[i];
+
         }
 
         System.out.println("В вашей корзине:");
@@ -77,4 +79,7 @@ public class Main {
 
         System.out.println("Сумма всей покупки: " + (sum + sumSale) + " руб");
     }
+
 }
+
+
